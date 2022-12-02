@@ -1,0 +1,11 @@
+USE world;mostrar_nombre_pais_idioma
+DELIMITER $$
+
+CREATE PROCEDURE mostrar_nombre_pais_idioma()
+BEGIN
+SELECT PA.Name AS pais, CIU.Name AS ciudad, LEN.Language AS idioma FROM city AS CIU
+INNER JOIN country AS PA ON PA.Code = CIU.CountryCode
+INNER JOIN countrylanguage AS LEN ON PA.Code = LEN.CountryCode;
+END$$
+
+CALL world. mostrar_nombre_pais_idioma(); 
